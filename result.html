@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Quiz Results</h1>
+
+    <h2>Score: {{ score }} / {{ total }}</h2>
+
+    <h3>Level: {{ level }}</h3>
+
+    <p>{{ message }}</p>
+
+    <p><b>AI Recommendation:</b> {{ recommendation }}</p>
+
+    <h3>Questions to Review:</h3>
+
+    {% if wrong_questions %}
+        <ul>
+        {% for q in wrong_questions %}
+            <li>{{ q }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Perfect score! 🎉</p>
+    {% endif %}
+
+    <a href="/dashboard">Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

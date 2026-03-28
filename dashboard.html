@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Welcome, {{ user.username }} 👋</h1>
+
+    <p><b>Course:</b> {{ user.course }}</p>
+    <p><b>Email:</b> {{ user.email }}</p>
+
+    <hr>
+
+    <h2>📚 Select Unit</h2>
+
+    <div class="unit-boxes">
+
+        <a href="/quiz/ICT" class="unit-card">ICT Basics</a>
+        <a href="/quiz/Programming" class="unit-card">Programming</a>
+        <a href="/quiz/Cybersecurity" class="unit-card">Cybersecurity</a>
+        <a href="/quiz/Networking" class="unit-card">Networking</a>
+
+        <a href="/chat" class="unit-card chatbot">AI Tutor Chat 🤖</a>
+
+    </div>
+
+    <hr>
+
+    <h2>📊 Performance History</h2>
+
+    {% if performance %}
+        <div class="performance-box">
+
+            {% for p in performance %}
+            <div class="perf-card">
+                <p><b>Unit:</b> {{ p.unit }}</p>
+                <p><b>Score:</b> {{ p.score }} / {{ p.total }}</p>
+                <p><b>Level:</b> {{ p.level }}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    {% else %}
+        <p>No performance yet. Start a quiz!</p>
+    {% endif %}
+
+    <br>
+    <a href="/logout">Logout</a>
+
+</div>
+
+</body>
+</html>

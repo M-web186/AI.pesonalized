@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ unit }} Quiz</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>📝 {{ unit }} Quiz</h2>
+
+    <form method="POST" action="/submit/{{ unit }}">
+
+        {% for q in questions %}
+        <div class="question-box">
+
+            <div class="question-text">
+                {{ loop.index }}. {{ q.q }}
+            </div>
+
+            {% set q_index = loop.index0 %}
+
+            <div class="options">
+                {% for opt in q.options %}
+                <label class="option">
+                    <input type="radio" name="q{{ q_index }}" value="{{ opt }}" required>
+                    <span>{{ opt }}</span>
+                </label>
+                {% endfor %}
+            </div>
+
+        </div>
+        {% endfor %}
+
+        <button type="submit">Submit Quiz</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
